@@ -27,4 +27,4 @@ To get a copy of the project up and running on your local machine, follow these 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rezaalawi/rekayasaweb-bootstrap.git
+   git clone https://github.com/rezaalawii/tugas-rekayasa--web-unpam.git
