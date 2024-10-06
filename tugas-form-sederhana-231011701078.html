@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Newsletter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFC0CB; 
+        }
+        .feedback-message {
+            display: none; 
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%; 
+            max-width: 400px; 
+            margin: 0 auto 20px; 
+            text-align: center; 
+        }
+        .card-container {
+            max-width: 400px; 
+            width: 100%; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <section class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="card-container">
+          
+            <div class="feedback-message" id="feedbackMessage"></div>
+
+            <div class="card shadow-lg" style="border-radius: 15px;">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center" style="font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: #333;">Daftar Newsletter</h2>
+
+                    <form id="newsletterForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Alamat Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Masukkan alamat email Anda" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" style="border-radius: 10px;">Daftar</button>
+                    </form>
+
+                    <div class="alert alert-info text-center mt-3" role="alert" style="border-radius: 10px; background-color: rgba(173, 216, 230, 0.8);">
+                        <strong>Catatan:</strong> Halaman akan otomatis kembali.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const feedbackMessage = document.getElementById('feedbackMessage');
+    
+           
+            feedbackMessage.style.display = 'none';
+            feedbackMessage.innerHTML = '';
+    
+            if (name === "" || email === "") {
+               
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Semua field harus diisi.`;
+            } else if (!validateEmail(email)) {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Format email tidak valid.`;
+            } else {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(144, 238, 144, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10004;</span> Terima kasih telah mendaftar newsletter!`;
+                
+                
+                feedbackMessage.style.display = 'block';
+                
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html'; 
+                }, 2000); 
+            }
+    
+            feedbackMessage.style.display = 'block'; 
+        });
+    
+        function validateEmail(email) {
+            
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+
+</body>
+</html>

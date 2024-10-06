@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Akun</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #FFC0CB; 
+        }
+        .feedback-message {
+            display: none; 
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%; 
+            max-width: 400px; 
+            margin: 0 auto 20px; 
+            text-align: center; 
+        }
+        .card-container {
+            max-width: 400px; 
+            width: 100%; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        .card {
+            background-color: #ffffff; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            padding: 20px; 
+        }
+        .form-label {
+            font-weight: bold; 
+        }
+        .btn-primary {
+            background-color: #FF69B4; 
+            border: none; 
+            transition: background-color 0.3s ease; 
+        }
+        .btn-primary:hover {
+            background-color: #ff1493; 
+        }
+        .social-login {
+            margin-top: 20px;
+        }
+        .social-btn {
+            border-radius: 10px; 
+        }
+        
+        @media (max-width: 576px) {
+            .card-container {
+                padding-top: 30px; 
+                padding-bottom: 30px; 
+            }
+            h2.card-title {
+                font-size: 2rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card-container">
+            <div class="feedback-message" id="feedbackMessage"></div>
+
+            <div class="card shadow-lg">
+                <div class="card-body p-4">
+                    <h2 class="card-title text-center" style="font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: #333;">Daftar Akun</h2>
+
+                    <form id="registrationForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Alamat Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Masukkan alamat email Anda" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Minimal 8 karakter" minlength="8" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Ulangi password Anda" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" style="border-radius: 10px;">Daftar</button>
+                    </form>
+
+                    <div class="social-login text-center">
+                        <p class="mt-3">Atau daftar dengan:</p>
+                        <button class="btn btn-outline-danger social-btn w-100 mb-2">
+                            <i class="fab fa-google"></i> Daftar dengan Google
+                        </button>
+                        <button class="btn btn-outline-primary social-btn w-100 mb-2">
+                            <i class="fab fa-facebook-f"></i> Daftar dengan Facebook
+                        </button>
+                        <button class="btn btn-outline-dark social-btn w-100">
+                            <i class="fab fa-apple"></i> Daftar dengan Apple
+                        </button>
+                    </div>
+                    
+
+                    <div class="alert alert-info text-center mt-3" role="alert" style="border-radius: 10px; background-color: rgba(173, 216, 230, 0.8);">
+                        <strong>Catatan:</strong> Halaman akan otomatis kembali.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const feedbackMessage = document.getElementById('feedbackMessage');
+    
+            
+            feedbackMessage.style.display = 'none';
+            feedbackMessage.innerHTML = '';
+    
+            if (name === "" || email === "" || password === "" || confirmPassword === "") {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)';
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Semua field harus diisi.`;
+            } else if (!validateEmail(email)) {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)';
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Format email tidak valid.`;
+            } else if (password.length < 8) {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Password minimal 8 karakter.`;
+            } else if (password !== confirmPassword) {
+                
+                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10060;</span> Password dan konfirmasi tidak cocok.`;
+            } else {
+               
+                feedbackMessage.style.backgroundColor = 'rgba(144, 238, 144, 0.8)'; 
+                feedbackMessage.innerHTML = `<span>&#10004;</span> Terima kasih telah mendaftar!`;
+                
+                feedbackMessage.style.display = 'block';
+               
+                setTimeout(() => {
+                    window.location.href = 'index.html'; 
+                }, 2000); 
+            }
+    
+            feedbackMessage.style.display = 'block'; 
+        });
+    
+        function validateEmail(email) {
+            
+            const re = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+
+</body>
+</html>
