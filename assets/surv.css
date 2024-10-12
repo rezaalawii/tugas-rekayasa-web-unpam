@@ -1,0 +1,30 @@
+body {
+    background-color: #FFC0CB;
+}
+
+.feedback-message {
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.form-container {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

@@ -1,0 +1,33 @@
+body {
+    background-color: #FFC0CB;
+}
+
+.feedback-message {
+    display: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.card-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-submit {
+    border-radius: 10px;
+    background-color: #FF69B4;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #FF1493;
+}

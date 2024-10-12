@@ -4,30 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran Newsletter</title>
+    <link rel="icon" href="img/fav.jpeg" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #FFC0CB; 
-        }
-        .feedback-message {
-            display: none; 
-            padding: 10px;
-            border-radius: 10px;
-            width: 90%; 
-            max-width: 400px; 
-            margin: 0 auto 20px; 
-            text-align: center; 
-        }
-        .card-container {
-            max-width: 400px; 
-            width: 100%; 
-            margin: 0 auto; 
-        }
-    </style>
+    <link rel="stylesheet" href="assets/form.css">
 </head>
 <body>
-
     <section class="vh-100 d-flex justify-content-center align-items-center">
         <div class="card-container">
           
@@ -58,49 +40,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-    
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const feedbackMessage = document.getElementById('feedbackMessage');
-    
-           
-            feedbackMessage.style.display = 'none';
-            feedbackMessage.innerHTML = '';
-    
-            if (name === "" || email === "") {
-               
-                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
-                feedbackMessage.innerHTML = `<span>&#10060;</span> Semua field harus diisi.`;
-            } else if (!validateEmail(email)) {
-                
-                feedbackMessage.style.backgroundColor = 'rgba(255, 99, 71, 0.8)'; 
-                feedbackMessage.innerHTML = `<span>&#10060;</span> Format email tidak valid.`;
-            } else {
-                
-                feedbackMessage.style.backgroundColor = 'rgba(144, 238, 144, 0.8)'; 
-                feedbackMessage.innerHTML = `<span>&#10004;</span> Terima kasih telah mendaftar newsletter!`;
-                
-                
-                feedbackMessage.style.display = 'block';
-                
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html'; 
-                }, 2000); 
-            }
-    
-            feedbackMessage.style.display = 'block'; 
-        });
-    
-        function validateEmail(email) {
-            
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
-        }
-    </script>
-
+    <script src="js/form.js"></script>
 </body>
 </html>

@@ -1,0 +1,51 @@
+body {
+    background-color: #FFC0CB; 
+}
+.feedback-message {
+    display: none; 
+    padding: 10px;
+    border-radius: 10px;
+    width: 90%; 
+    max-width: 400px; 
+    margin: 0 auto 20px; 
+    text-align: center; 
+}
+.card-container {
+    max-width: 400px; 
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+.card {
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+}
+.form-label {
+    font-weight: bold; 
+}
+.btn-primary {
+    background-color: #FF69B4; 
+    border: none; 
+    transition: background-color 0.3s ease; 
+}
+.btn-primary:hover {
+    background-color: #ff1493; 
+}
+.social-login {
+    margin-top: 20px;
+}
+.social-btn {
+    border-radius: 10px; 
+}
+
+@media (max-width: 576px) {
+    .card-container {
+        padding-top: 30px; 
+        padding-bottom: 30px; 
+    }
+    h2.card-title {
+        font-size: 2rem; 
+    }
+}
