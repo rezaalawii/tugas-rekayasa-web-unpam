@@ -29,25 +29,3 @@ To get a copy of the project up and running on your local machine, follow these 
    ```bash
    git clone https://github.com/rezaalawii/tugas-rekayasa-web-unpam.git
 
-```html
-<div id="currentDateTime"></div>
-
-<script>
-    function updateDateTime() {
-        const now = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric', 
-            hour: '2-digit', 
-            minute: '2-digit', 
-            second: '2-digit', 
-            hour12: false 
-        };
-        document.getElementById('currentDateTime').innerHTML = now.toLocaleDateString('id-ID', options);
-    }
-
-    setInterval(updateDateTime, 1000); // Update setiap detik
-    updateDateTime(); // Panggil sekali untuk menampilkan waktu segera
-</script>
